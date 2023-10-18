@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "ru">
+
+<head>
+<meta charset = "UTF-8">
+<link rel = "stylesheet" href = "static/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monda&family=Montserrat:ital,wght@1,600&family=Sora:wght@500&display=swap" rel="stylesheet">
+<title>Товары для студентов</title>
+</head>
+
+<body>
+    <header class = "header">
+        <div class="container1">
+           <div class="header_inner">
+                <div class="header_logo">
+                    <img src= "static/images/poly.jpg" alt="Рисунок 1" height="80">
+                </div>
+
+                <nav class = "nav">
+                    <a class="nav_link" href="#">Начать продавать</a>
+                    <a class="nav_link" href="#">Зарегистрироваться</a>
+                    <a class="nav_link" href="#">Личный кабинет</a>
+                </nav>
+           </div>
+        </div>
+    </header>
+
+    <div class="string">
+        <div class="container2">
+            <div class="catalog">
+                <a class="catalog_text" href="../WEB/catalog_categories.html">Каталог товаров</a>
+            </div>
+        </div>
+    </div>
+
+    <div class = "intro">
+        <div class = "container3">
+           <table border="0"  cellspacing="45" >
+           <tr>
+           <td><img src= "static/images/poly1.jpg" alt="Рисунок 1" width="300" height="400"></td>
+           <td><img src= "static/images/poly2.jpg" alt="Рисунок 2" width="300" height="400"></td>
+           <td><img src= "static/images/poly3.jpg" alt="Рисунок 3" width="300" height="400"></td>
+           </tr>
+           <tr>
+           <td><img src= "static/images/poly4.jpg" alt="Рисунок 4" width="300" height="400"></td>
+           <td><img src= "static/images/poly5.jpg" alt="Рисунок 5" width="300" height="400"></td>
+           <td><img src= "static/images/poly6.jpg" alt="Рисунок 6" width="300" height="400"></td>
+           </tr>
+           </table>
+        </div>
+    </div>
+
+    <div class="info">
+        <div class="container2">
+            <br> <br> <a class="info_link" href="../WEB/about_us.html">О нас</a> <br>
+            <a class="info_link" href="#">Контакты</a> <br>
+            <a class="info_link" href="#">Часто задаваемые вопросы</a> <br>
+            <a class="info_link" href="#">Техническая поддержка</a>
+        </div>
+    </div>
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
