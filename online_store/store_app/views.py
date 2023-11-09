@@ -5,9 +5,11 @@ from django.http import HttpResponse
 
 
 def first_page(request):
-   #return HttpResponse("<h3>Hello!</h3>")
-   return render(request, 'first_page.html')
+    # return HttpResponse("<h3>Hello!</h3>")
+    return render(request, 'first_page.html')
 
 
 def about_us(request):
-   return HttpResponse("<h3>about</h3>")
+    return HttpResponse("<h3>about</h3>")
+
+
