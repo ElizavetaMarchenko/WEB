@@ -13,3 +13,5 @@ def about_us(request):
     return HttpResponse("<h3>about</h3>")
 
 
+def index(request):
+    return render(request, 'index.html')
