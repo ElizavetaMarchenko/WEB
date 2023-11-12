@@ -9,6 +9,7 @@ export default function Header() {
     message.info(`Click on item ${key}`);
   };
 
+
   const [category, setCategory] = useState([]);
 
     useEffect(() => {
@@ -36,15 +37,10 @@ export default function Header() {
         </div>
         <div className="logo"></div>
         <ul className="nav">
-          <Link to = "/login">
+          <Link to = "/login" style={{ textDecoration: 'none', color: 'inherit' }}>
             <li>
               <div className="welcome_photo"></div>
               <p>Войти</p>
-            </li>
-          </Link>
-          <Link to = "/registration">
-            <li>
-              <p>Зарегистрироваться</p>
             </li>
           </Link>
           <li>
@@ -58,6 +54,7 @@ export default function Header() {
       </div>
       <div className="presentation"></div>
       <div className="welcome">Добро пожаловать на студенческий маркетплейс! Здесь вы можете покупать и продавать учебные материалы, конспекты, учебники, лабораторные работы и другие учебные услуги. У нас - сообщество студентов, готовых поддержать друг друга и облегчить обучение. Давайте учиться вместе!</div>
+
     </header>
   );
 }

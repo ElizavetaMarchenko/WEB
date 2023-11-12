@@ -11,6 +11,7 @@ from rest_framework.decorators import api_view
 from .models import *
 from .serializer import *
 
+
 # Create your views here.
 
 
@@ -43,11 +44,17 @@ def getCategory(request):
     return Response(serializer.data)
 
 
+@api_view(['GET'])
+def getSeller_telephone(request, telephone):
+    seller = Seller.objects.filter(seller_telephone=telephone)
+    serializer = SellerSerializer(seller, many=True)
+    return Response(serializer.data)
+
+
 @api_view(['POST'])
 def postSeller(request):
     data = JSONParser().parse(request)
     serializer = SellerSerializer(data=data)
-    print("POOOOOOOOSSSSTTTTTTTT")
     if serializer.is_valid():
         serializer.save()
         return JsonResponse(serializer.data)
