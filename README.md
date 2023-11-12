@@ -6,6 +6,7 @@ online store <br />
 Также нужно установить django-cors-headers в venv командой: pip install django-cors-headers <br />
 Также нужно скачать node.js на компьютер, чтобы была возмжность пользоваться npm  <br />
 Также нужно установить axios в \online_store\frontend командой:  npm install axios <br />
+Также нужно установить async в \online_store\frontend командой:  npm install async <br />
 <br />
 Чтобы собрать приложение:<br />
 0. Активировать venv командой: venv/scripts/activate
