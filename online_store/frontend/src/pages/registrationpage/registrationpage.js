@@ -2,8 +2,46 @@ import React, { useState } from 'react';
 import { Form, Input, Button, Row, Col, Card } from 'antd';
 import { UserOutlined, LockOutlined, PhoneOutlined, GlobalOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 const Registrationpage = () => {
+
+  const [seller, Setseller] = useState({
+    seller_name : "",
+    seller_login : "",
+    seller_social_network : "",
+    seller_telephone : "",
+    seller_password : "",
+  });
+
+  function handle(e){
+        const newSeller = {...seller};
+        newSeller[e.target.id] = e.target.value;
+        console.log("id", e.target.id);
+        console.log("value", e.target.value);
+        Setseller(newSeller);
+        console.log("name", seller.seller_name);
+        console.log("login", seller.seller_login);
+        console.log(newSeller);
+  }
+
+  function submit(e){
+        e.preventDefault();
+        axios.post('post/',{
+            seller_name : seller.seller_name,
+            seller_login : seller.seller_login,
+            seller_social_network : seller.seller_social_network,
+            seller_telephone : seller.seller_telephone,
+            seller_password : seller.seller_password,
+        })
+        .then((response =>{
+        console.log("data", response.data);
+        }))
+        .catch(function (error) {
+        console.log(error);
+        });
+  }
+
   const [formValid, setFormValid] = useState(false);
 
   const onFinish = (values) => {
@@ -38,14 +76,15 @@ const Registrationpage = () => {
         <Col span={8}>
           <Card title="Регистрация" style={{ borderRadius: '12px' }}>
             <Form
-              name="registration"
+              name="seller"
               onFinish={onFinish}
               layout="vertical"
               onFieldsChange={handleFormChange}
             >
               <Form.Item
-                name="username"
+                name="name"
                 label="Имя пользователя"
+                onChange = {(e)=>handle(e)} id="name" value={seller.seller_name}
                 rules={[
                   { required: true, message: 'Введите имя пользователя' },
                 ]}
@@ -56,8 +95,22 @@ const Registrationpage = () => {
               </Form.Item>
 
               <Form.Item
-                name="socialLink"
+                name="login"
+                label="Логин пользователя"
+                onChange = {(e)=>handle(e)} id="login" value={seller.seller_login}
+                rules={[
+                  { required: true, message: 'Введите логин пользователя' },
+                ]}
+              >
+                <Input
+                  prefix={<UserOutlined className="site-form-item-icon" />}
+                />
+              </Form.Item>
+
+              <Form.Item
+                name="social_network"
                 label="Ссылка на соц. сеть (Вк, Тг, Инста)"
+                onChange = {(e)=>handle(e)} id="social_network" value={seller.seller_social_network}
                 rules={[
                   { required: true, message: 'Введите ссылку на соц. сеть' },
                   { validator: socialLinkValidator },
@@ -69,8 +122,9 @@ const Registrationpage = () => {
               </Form.Item>
 
               <Form.Item
-                name="phoneNumber"
+                name="telephone"
                 label="Номер телефона"
+                onChange = {(e)=>handle(e)} id="phone" value={seller.telephone}
                 rules={[
                   { required: true, message: 'Введите номер телефона' },
                   {
@@ -92,6 +146,7 @@ const Registrationpage = () => {
               <Form.Item
                 name="password"
                 label="Пароль"
+                onChange = {(e)=>handle(e)} id="password" value={seller.seller_password}
                 rules={[
                   { required: true, message: 'Введите пароль' },
                   { validator: passwordValidator },
@@ -124,10 +179,11 @@ const Registrationpage = () => {
                 />
               </Form.Item>
 
-              <Form.Item>
+              <Form.Item >
                 <Button
                   type="primary"
                   htmlType="submit"
+                  onClick = {(e) => submit(e)}
                   style={{ borderRadius: '12px' }}
                   disabled={!formValid}
                 >

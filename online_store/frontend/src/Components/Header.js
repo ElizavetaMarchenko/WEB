@@ -1,26 +1,32 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Dropdown, message} from 'antd';
 import {Link} from 'react-router-dom';
+import axios from 'axios'
 
 
 export default function Header() {
   const onClick = ({ key }) => {
     message.info(`Click on item ${key}`);
   };
-  const items= [
-    {
-      label: 'Учебные материалы',
-      key: '1',
-    },
-    {
-      label: 'Одежда',
-      key: '2',
-    },
-    {
-      label: 'Разное',
-      key: '3',
-    },
-  ];
+
+  const [category, setCategory] = useState([]);
+
+    useEffect(() => {
+        axios.get('get/')
+        .then((response) => {
+            setCategory(response.data)
+        }).catch(() => {
+            alert('Error in get')
+        }, [])
+    }
+    )
+
+  const items = category.map(item => {
+  return {label: item.category_name,
+  key: item.category_id
+  }
+  })
+
   return (
     <header>
       <div className="head">
@@ -36,9 +42,14 @@ export default function Header() {
               <p>Войти</p>
             </li>
           </Link>
+          <Link to = "/registration">
+            <li>
+              <p>Зарегистрироваться</p>
+            </li>
+          </Link>
           <li>
             <div className="category_photo"></div>
-            
+
             <Dropdown menu={{ items, onClick }}>
               <p className="category_text">Категории</p>
             </Dropdown>
@@ -50,4 +61,3 @@ export default function Header() {
     </header>
   );
 }
-

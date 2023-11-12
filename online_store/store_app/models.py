@@ -45,8 +45,8 @@ class Product(models.Model):
 class Seller(models.Model):
     seller_id = models.AutoField(primary_key=True, blank=True, null=False)
     seller_login = models.TextField()
-    seller_password = models.IntegerField()
-    seller_telephone = models.IntegerField(blank=True, null=True)
+    seller_password = models.TextField()
+    seller_telephone = models.TextField(blank=True, null=True)
     seller_name = models.TextField(blank=True, null=True)
     seller_social_network = models.TextField(blank=True, null=True)
 
