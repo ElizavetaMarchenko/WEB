@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2dc705b4.css",
+    "main.js": "/static/js/main.d6752fab.js",
+    "static/media/Первая заставка.png": "/static/media/Первая заставка.f984e4a7446f1d3f7174.png",
+    "static/media/Вторая заставка.png": "/static/media/Вторая заставка.0bf5ecb55e90fcd0900d.png",
+    "static/media/school_material.png": "/static/media/school_material.2116bb747a157caa165c.png",
+    "static/media/clothing_material.png": "/static/media/clothing_material.8a25c96991fc87cbbfac.png",
+    "static/media/different_material.png": "/static/media/different_material.bb16a3f2becc713ceff5.png",
+    "index.html": "/index.html",
+    "main.2dc705b4.css.map": "/static/css/main.2dc705b4.css.map",
+    "main.d6752fab.js.map": "/static/js/main.d6752fab.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2dc705b4.css",
+    "static/js/main.d6752fab.js"
+  ]
+}
