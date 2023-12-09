@@ -92,3 +92,13 @@ def deleteCategory(request, pk):
     category = Category.objects.get(category_id=pk)
     category.delete()
     return Response('Category Eliminado')
+
+
+@api_view(['GET'])
+def getProductsBySellerAndCategory(request, seller_id, category_id):
+    try:
+        products = Product.objects.filter(seller_id=seller_id, category_id=category_id)
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)
+    except Product.DoesNotExist:
+        return Response({'error': 'Продукты не найдены'}, status=status.HTTP_404_NOT_FOUND)

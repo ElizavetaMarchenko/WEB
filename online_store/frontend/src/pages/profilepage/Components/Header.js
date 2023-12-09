@@ -11,7 +11,7 @@ export default function Header() {
   const [category, setCategory] = useState([]);
 
   const fetchData = () => {
-    axios.get('get/')
+    axios.get('getCategory/')
       .then((response) => {
         setCategory(response.data);
       })

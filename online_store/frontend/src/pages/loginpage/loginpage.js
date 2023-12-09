@@ -3,6 +3,8 @@ import { Form, Input, Button, Checkbox, Row, Col, message } from 'antd';
 import { PhoneOutlined, LockOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import {Helmet} from "react-helmet";
+
 
 const LoginPage = () => {
   const [seller, setSeller] = useState({
@@ -65,6 +67,7 @@ const LoginPage = () => {
 
   return (
     <Row justify="center" align="middle" className="login-container" style={{ minHeight: '100vh' }}>
+      <Helmet><title>Authentication</title></Helmet>
       <Col span={8}>
         <Form form={form} name="login_form" onFinish={onFinish} layout="vertical">
           <Form.Item

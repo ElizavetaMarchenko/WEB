@@ -3,6 +3,7 @@ import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import Items from "../../Components/Items";
 import './style.css';
+import {Helmet} from "react-helmet";
 
 class Mainpage extends React.Component{
   constructor(props){
@@ -39,6 +40,7 @@ class Mainpage extends React.Component{
   render(){
     return (
       <div className="wrapper">
+        <Helmet><title>POLYVITO</title></Helmet>
         <Header />
         <Items items = {this.state.items}/>
         <Footer />
