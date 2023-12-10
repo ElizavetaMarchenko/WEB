@@ -13,6 +13,7 @@ const LoginPage = () => {
     login_form_telephone : "",
     login_form_password : "",
   });
+  const [id_sel, setId] = useState(-1);
 
   function handle(e){
         const newSeller = {...seller};
@@ -38,11 +39,12 @@ const LoginPage = () => {
         return 1;
         }
         }
-
     }
 
     async function submit(){
         let response = await axios.get('get_tel/'+seller.login_form_telephone)
+        const id = await response.data[0]["seller_id"] ;
+        await setId(id);
         let result = await response_result(response);
         return result;
     }
@@ -131,7 +133,8 @@ const LoginPage = () => {
                 style={{ borderRadius: '12px', width: '100%' }}
                 disabled={!formValid}
               >
-                <Link to="/profile">Войти</Link>
+                <Link to="/profile" state={{ id: id_sel }}>
+                      Войти</Link>
               </Button>
             </Col>
             <Col span={12}>
