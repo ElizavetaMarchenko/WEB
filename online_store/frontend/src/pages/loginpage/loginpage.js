@@ -11,6 +11,7 @@ const LoginPage = () => {
     login_form_telephone: '',
     login_form_password: '',
   });
+  const [id_sel, setId] = useState(-1);
 
   const navigate = useNavigate();
 
@@ -27,14 +28,18 @@ const LoginPage = () => {
           password: seller.login_form_password,
         },
       });
-
+  
+      const id = response.data[0]["seller_id"];
+      await setId(id); // Ожидание установки id
+  
       const result = responseResult(response.data);
       return result;
     } catch (error) {
       console.error('Error in submit:', error);
-      return -1; // или другой код ошибки
+      return -1;
     }
   };
+  
 
   const responseResult = (data) => {
     console.log('data:', data);
@@ -46,11 +51,12 @@ const LoginPage = () => {
   const onFinish = async () => {
     try {
       await form.validateFields();
-      const result = await submit();
-
+      const result = await submit(); // Ожидание завершения submit
+  
       if (result === 0) {
         console.log('Login successful. Redirect to profile page.');
-        navigate('/profile'); // Переход на страницу профиля
+        await setId(id_sel); // Ожидание установки id_sel перед переходом
+        navigate('/profile', { state: { id: id_sel } });
       } else if (result === 1) {
         console.log('Invalid password');
         message.error('Неверный пароль');
@@ -62,6 +68,7 @@ const LoginPage = () => {
       console.error('Form validation failed:', error);
     }
   };
+  
 
   const form = Form.useForm()[0];
 

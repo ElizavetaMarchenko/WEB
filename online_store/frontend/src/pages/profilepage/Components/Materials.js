@@ -1,7 +1,9 @@
 import React from 'react';
 import MaterialBlock from './MaterialBlock';
 
-const Materials = () => {
+const Materials = (props) => {
+  console.log("id=")
+  console.log(props.id)
   return (
     <div>
       <MaterialBlock className='school_block' title='Учебный материал' />

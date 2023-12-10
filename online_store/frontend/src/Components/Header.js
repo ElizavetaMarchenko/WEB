@@ -13,7 +13,7 @@ export default function Header() {
   const [category, setCategory] = useState([]);
 
   const fetchData = () => {
-    axios.get('get/')
+    axios.get('getCategory/')
       .then((response) => {
         setCategory(response.data);
       })
@@ -40,7 +40,7 @@ export default function Header() {
         </div>
         <div className="logo"></div>
         <ul className="nav">
-          <Link to = "/login">
+          <Link to = "/login" style={{ textDecoration: 'none' }}>
             <li>
               <div className="welcome_photo"></div>
               <p>Войти</p>
