@@ -9,4 +9,8 @@ urlpatterns = [
     path('post/', views.postSeller),
     path('put/<int:pk>', views.putCategory),
     path('delete/<int:pk>', views.deleteCategory),
+    path('getSellers/', views.getSellers),
+    path('addProduct/', views.addProduct),
+    path('getStatus/', views.getStatus),
+    path('get_seller_name/<int:seller_id>', views.get_seller_name_by_id),
 ]

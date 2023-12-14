@@ -4,7 +4,8 @@ from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser
 from django.contrib.auth.hashers import check_password
 
-from rest_framework.response import Response
+from rest_framework.response import Response    
+from rest_framework.request import Request
 from rest_framework.views import APIView
 from rest_framework.serializers import Serializer
 from rest_framework.decorators import api_view
@@ -45,25 +46,6 @@ def getSeller_password(request, password):
     serializer = SellerSerializer(seller, many=True)
     return Response(serializer.data)
 
-@api_view(['GET'])
-def getSeller(request):
-    telephone = request.GET.get('telephone', '')
-    password = request.GET.get('password', '')
-
-    # Проверяем наличие продавца по номеру телефона
-    seller = Seller.objects.filter(seller_telephone=telephone)
-
-    if not seller.exists():
-        return Response({'error': 'Продавец не найден'}, status=status.HTTP_404_NOT_FOUND)
-
-    # Если номер телефона верен, проверяем пароль
-    seller_instance = seller.first()
-    if check_password(password, seller_instance.seller_password):
-        serializer = SellerSerializer(seller_instance)
-        return Response(serializer.data)
-    else:
-        return Response({'error': 'Неверный пароль'}, status=status.HTTP_401_UNAUTHORIZED)
-
 
 
 @api_view(['POST'])
@@ -102,3 +84,39 @@ def getProductsBySellerAndCategory(request, seller_id, category_id):
         return Response(serializer.data)
     except Product.DoesNotExist:
         return Response({'error': 'Продукты не найдены'}, status=status.HTTP_404_NOT_FOUND)
+    
+@api_view(['GET'])
+def get_seller_name_by_id(request, seller_id):
+    try:
+        seller_login = Seller.objects.get(seller_id=seller_id)
+        serializer = SellerSerializer(seller_login)
+        return Response({'seller_login': serializer.data['seller_login']})
+    except Seller.DoesNotExist:
+        return Response({'error': 'Продавец не был найден'}, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['GET'])
+def getSellers(request):
+    sellers = Seller.objects.all()
+    serializer = SellerSerializer(sellers, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getStatus(request):
+    status = Status.objects.all()
+    serializer = StatusSerializer(status, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+def addProduct(request):
+    data = request.data
+    serializer = ProductSerializer(data=data)
+
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+

@@ -1,10 +1,16 @@
 import React from 'react';
 import { Card, Typography, Space } from 'antd';
 import { EditOutlined, PlusOutlined, DeleteOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
+
 
 const { Title } = Typography;
 
 const MaterialBlock = ({ className, title }) => {
+  const navigate = useNavigate();
+  const handleAddProductClick = () => {
+    navigate('/addproduct');
+  };
   return (
     <Card
       className={className}
@@ -26,7 +32,7 @@ const MaterialBlock = ({ className, title }) => {
             }}
           >
             <EditOutlined style={{ fontSize: '60px' }} />
-            <PlusOutlined style={{ fontSize: '60px' }} />
+            <PlusOutlined style={{ fontSize: '60px' }} onClick={handleAddProductClick} />
             <DeleteOutlined style={{ fontSize: '60px' }} />
           </Space>
         </div>

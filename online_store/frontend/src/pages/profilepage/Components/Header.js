@@ -2,13 +2,14 @@ import React, {useState, useEffect} from "react";
 import { Dropdown, message} from 'antd';
 import axios from 'axios';
 
-export default function Header() {
+export default function Header(props) {
   const onClick = ({ key }) => {
     message.info(`Click on item ${key}`);
     fetchData();
   };
 
   const [category, setCategory] = useState([]);
+  const [sellerName, setSellerName] = useState('fgdfg');
 
   const fetchData = () => {
     axios.get('getCategory/')
@@ -18,10 +19,18 @@ export default function Header() {
       .catch(() => {
         alert('Error in get');
       });
+    axios.get(`get_seller_name/${props.id}`)
+    .then((response) => {
+      setSellerName(response.data.seller_login);
+    })
+    .catch(() => {
+      alert('Error in get seller name');
+    });
   };
   useEffect(()=>{
     fetchData();
-  },[]);
+  },[props.id]);
+
 
   const items = category.map(item => {
   return {label: item.category_name,
@@ -39,7 +48,7 @@ export default function Header() {
         <ul className="nav">
           <li>
             <div className="welcome_photo"></div>
-            <p>Вы вошли</p>
+            <p>{sellerName}</p>
           </li>
           <li>
             <div className="category_photo"></div>

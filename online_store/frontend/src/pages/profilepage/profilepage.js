@@ -12,8 +12,8 @@ const Profilepage = () =>{
   return (
     <div className="wrapper">
       <Helmet><title>Profile</title></Helmet>
-      <Header />
-      <Materials id={location.state.id}/>
+      <Header id = {location.state.id}/>
+      <Materials id = {location.state.id}/>
       <Footer />
     </div>
   )
