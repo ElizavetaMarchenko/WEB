@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
+
+
+header .profile_presentation{
+    margin: 0 0 59px 0;
+    background: url('./img/Вторая\ заставка.png') no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 350px;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
+header .profile_welcome{
+    text-align: center;
+    font-size: 23px;
+    width: 1185px;
+    height: 216px;
+    margin: 0 auto;
+}
+
+header .profile_welcome__title{
+    font-size: 50px;
+}
+
+.school_block__head{
+    margin: 0 0 95px 0;
+    background: url('./img/school_material.png') no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 289px;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
+.school_block {
+    font-family: 'Playfair Display', serif;
+}
+
+.clothing_block__head{
+    margin: 0 0 95px 0;
+    background: url('./img/clothing_material.png') no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 289px;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
+.differents_block__head{
+    margin: 0 0 95px 0;
+    background: url('./img/different_material.png') no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 289px;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+

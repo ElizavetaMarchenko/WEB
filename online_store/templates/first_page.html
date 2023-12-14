@@ -1,5 +1,4 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang = "ru">
 
 <head>
@@ -38,6 +37,11 @@
 
     <div class = "intro">
         <div class = "container3">
+            {% for serv in object_list %}
+            <tr>
+                <td>{{ serv.name }}</td>
+            </tr>
+            {% endfor %}
            <table border="0"  cellspacing="45" >
            <tr>
            <td><img src= "static/images/poly1.jpg" alt="Рисунок 1" width="300" height="400"></td>
