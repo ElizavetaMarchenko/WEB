@@ -13,7 +13,7 @@ export default function Header() {
   const [category, setCategory] = useState([]);
 
     useEffect(() => {
-        axios.get('get/')
+        axios.get('getCategory/')
         .then((response) => {
             setCategory(response.data)
         }).catch(() => {

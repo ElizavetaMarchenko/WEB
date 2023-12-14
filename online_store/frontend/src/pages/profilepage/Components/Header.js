@@ -1,33 +1,45 @@
 import React, {useState, useEffect} from "react";
 import { Dropdown, message} from 'antd';
-import {Link} from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
 
-
-export default function Header() {
+export default function Header(props) {
   const onClick = ({ key }) => {
     message.info(`Click on item ${key}`);
+    fetchData();
   };
 
-
+  console.log(props.id)
   const [category, setCategory] = useState([]);
+  const [sellerName, setSellerName] = useState('fgdfg');
 
-    useEffect(() => {
-        axios.get('get/')
-        .then((response) => {
-            setCategory(response.data)
-        }).catch(() => {
-            alert('Error in get')
-        }, [])
-    }
-    )
+  const fetchData = async () => {
+    await axios.get('get_seller_name/' + props.id)
+    .then((response) => {
+      setSellerName(response.data[0]["seller_login"]);
+    })
+    .catch(() => {
+      alert('Error in get seller name');
+    });
+
+    await axios.get('getCategory/')
+      .then((response) => {
+        setCategory(response.data);
+      })
+      .catch(() => {
+        alert('Error in get');
+      });
+
+  };
+  useEffect(()=>{
+    fetchData();
+  },[props.id]);
+
 
   const items = category.map(item => {
   return {label: item.category_name,
   key: item.category_id
   }
   })
-
   return (
     <header>
       <div className="head">
@@ -37,15 +49,12 @@ export default function Header() {
         </div>
         <div className="logo"></div>
         <ul className="nav">
-          <Link to = "/login" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <li>
-              <div className="welcome_photo"></div>
-              <p>Войти</p>
-            </li>
-          </Link>
+          <li>
+            <div className="welcome_photo"></div>
+            <p>{sellerName}</p>
+          </li>
           <li>
             <div className="category_photo"></div>
-
             <Dropdown menu={{ items, onClick }}>
               <p className="category_text">Категории</p>
             </Dropdown>

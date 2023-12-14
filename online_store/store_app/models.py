@@ -31,7 +31,7 @@ class Product(models.Model):
     product_name = models.TextField()
     product_description = models.TextField(blank=True, null=True)
     product_price = models.IntegerField()
-    product_image = models.BinaryField(blank=True, null=True)
+    product_image = models.TextField()
     product_comment = models.TextField(blank=True, null=True)
     category = models.ForeignKey(Category, models.DO_NOTHING)
     seller = models.ForeignKey('Seller', models.DO_NOTHING)

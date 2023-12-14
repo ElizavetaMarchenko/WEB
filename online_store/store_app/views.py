@@ -1,7 +1,7 @@
-
 from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser
 
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .serializer import *
@@ -37,6 +37,13 @@ def getSeller_telephone(request, telephone):
     return Response(serializer.data)
 
 
+@api_view(['GET'])
+def get_seller_name_by_id(request, seller_id):
+    seller_login = Seller.objects.filter(seller_id=seller_id)
+    serializer = SellerSerializer(seller_login, many=True)
+    return Response(serializer.data)
+
+
 @api_view(['POST'])
 def postSeller(request):
     data = JSONParser().parse(request)
@@ -48,7 +55,7 @@ def postSeller(request):
 
 
 @api_view(['POST'])
-def postSeller(request):
+def postProduct(request):
     data = JSONParser().parse(request)
     serializer = ProductSerializer(data=data)
     if serializer.is_valid():
