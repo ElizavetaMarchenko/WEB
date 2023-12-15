@@ -1,49 +1,9 @@
-<<<<<<< HEAD
-import React from "react";
-=======
 import React, {useState, useEffect} from "react";
->>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import Items from "../../Components/Items";
 import './style.css';
 import {Helmet} from "react-helmet";
-<<<<<<< HEAD
-
-class Mainpage extends React.Component{
-  constructor(props){
-    super(props)
-    this.state={
-      items:[
-        {
-          id:1,
-          title: 'Конспект',
-          img: 'konspekt.jpg',
-          desc: 'Лучший конспект по физике',
-          category: 'Конспект',
-          price: '100'
-        },
-        {
-          id:2,
-          title: 'Военная форма',
-          img: 'voennaiforma.jpg',
-          desc: 'Форма для военки по дешману',
-          category: 'Одежда',
-          price: '10000'
-        },
-        {
-          id:3,
-          title: 'Кастрюля',
-          img: 'kastrili.jpg',
-          desc: 'Новая кастрюля(лишняя)',
-          category: 'Разное',
-          price: '1000'
-        }
-      ]
-    }
-  }  
-  render(){
-=======
 import { useLocation } from 'react-router-dom'
 import axios from 'axios'
 
@@ -90,21 +50,10 @@ const Mainpage = () => {
     })
 
 
->>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
     return (
       <div className="wrapper">
         <Helmet><title>POLYVITO</title></Helmet>
         <Header />
-<<<<<<< HEAD
-        <Items items = {this.state.items}/>
-        <Footer />
-      </div>
-    )
-  }
-}
-
-export default Mainpage;
-=======
         <Items items = {items}/>
         <Footer />
       </div>
@@ -112,4 +61,3 @@ export default Mainpage;
 }
 
 export default Mainpage;
->>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff

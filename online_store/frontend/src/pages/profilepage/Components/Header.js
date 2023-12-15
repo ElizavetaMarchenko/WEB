@@ -1,29 +1,5 @@
 import React, {useState, useEffect} from "react";
 import { Dropdown, message} from 'antd';
-<<<<<<< HEAD
-import axios from 'axios';
-
-export default function Header(props) {
-  const onClick = ({ key }) => {
-    message.info(`Click on item ${key}`);
-    fetchData();
-  };
-
-  const [category, setCategory] = useState([]);
-  const [sellerName, setSellerName] = useState('fgdfg');
-
-  const fetchData = () => {
-    axios.get('getCategory/')
-      .then((response) => {
-        setCategory(response.data);
-      })
-      .catch(() => {
-        alert('Error in get');
-      });
-    axios.get(`get_seller_name/${props.id}`)
-    .then((response) => {
-      setSellerName(response.data.seller_login);
-=======
 import { AiOutlineBars } from "react-icons/ai";
 import { FaUserSecret } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
@@ -47,22 +23,16 @@ export default function Header(props) {
     await axios.get('get_seller_name/' + props.id)
     .then((response) => {
       setSellerName(response.data[0]["seller_login"]);
->>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
     })
     .catch(() => {
       alert('Error in get seller name');
     });
-<<<<<<< HEAD
-=======
 
->>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
   };
   useEffect(()=>{
     fetchData();
   },[props.id]);
 
-<<<<<<< HEAD
-=======
    onclick= () => {
         const get_cat = async () =>
         {
@@ -78,7 +48,6 @@ export default function Header(props) {
 
         get_cat();
    }
->>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
 
   const items = category.map(item => {
   return {label: item.category_name,
@@ -95,15 +64,6 @@ export default function Header(props) {
         <div className="logo"></div>
         <ul className="nav">
           <li>
-<<<<<<< HEAD
-            <div className="welcome_photo"></div>
-            <p>{sellerName}</p>
-          </li>
-          <li>
-            <div className="category_photo"></div>
-            <Dropdown menu={{ items, onClick }}>
-              <p className="category_text">Категории</p>
-=======
             <FaUserSecret size={50}/>
             <p>{sellerName}</p>
           </li>
@@ -115,7 +75,6 @@ export default function Header(props) {
              onclick();}}>
             Категории
             </a>
->>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
             </Dropdown>
           </li>
         </ul>
@@ -127,9 +86,5 @@ export default function Header(props) {
       </div>
     </header>
   );
-<<<<<<< HEAD
 }
 
-=======
-}
->>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff

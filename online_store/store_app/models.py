@@ -31,11 +31,7 @@ class Product(models.Model):
     product_name = models.TextField()
     product_description = models.TextField(blank=True, null=True)
     product_price = models.IntegerField()
-<<<<<<< HEAD
-    product_image = models.TextField(blank=True, null=True)
-=======
     product_image = models.TextField()
->>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
     product_comment = models.TextField(blank=True, null=True)
     category = models.ForeignKey(Category, models.DO_NOTHING)
     seller = models.ForeignKey('Seller', models.DO_NOTHING)
@@ -66,7 +62,4 @@ class Status(models.Model):
     class Meta:
         managed = False
         db_table = 'Status'
-<<<<<<< HEAD
-=======
 
->>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
