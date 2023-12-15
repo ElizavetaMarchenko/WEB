@@ -1,52 +1,63 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import Items from "../../Components/Items";
 import './style.css';
 import {Helmet} from "react-helmet";
+import { useLocation } from 'react-router-dom'
+import axios from 'axios'
 
-class Mainpage extends React.Component{
-  constructor(props){
-    super(props)
-    this.state={
-      items:[
+const Mainpage = () => {
+  const location = useLocation()
+  const [product, setProduct] = useState([]);
+
+    useEffect(() => {
+        const get_prod = async () =>
         {
-          id:1,
-          title: 'Конспект',
-          img: 'konspekt.jpg',
-          desc: 'Лучший конспект по физике',
-          category: 'Конспект',
-          price: '100'
-        },
+        try
         {
-          id:2,
-          title: 'Военная форма',
-          img: 'voennaiforma.jpg',
-          desc: 'Форма для военки по дешману',
-          category: 'Одежда',
-          price: '10000'
-        },
-        {
-          id:3,
-          title: 'Кастрюля',
-          img: 'kastrili.jpg',
-          desc: 'Новая кастрюля(лишняя)',
-          category: 'Разное',
-          price: '1000'
+        let response = []
+        console.log("id=", location.state?.category_id)
+        if (location.state?.category_id == undefined )
+            {
+            response = await axios.get('getProduct/')
+            console.log(location.state?.category_id)
+            }
+        else
+            response = await axios.get('get_prod_category/' + location.state.category_id)
+
+        setProduct(response.data)
         }
-      ]
+        catch(error) {
+            alert('Error in get category')
+        }
+        }
+
+        get_prod();
+    },[location.state?.category_id]
+    )
+
+    const items = product.map(item =>
+    {
+    return {
+          id: item.product_id,
+          title: item.product_name,
+          img: item.product_image,
+          desc: item.product_description,
+          category: item.category,
+          price: item.product_price
     }
-  }
-  render(){
+    })
+
+
     return (
       <div className="wrapper">
         <Helmet><title>POLYVITO</title></Helmet>
         <Header />
-        <Items items = {this.state.items}/>
+        <Items items = {items}/>
         <Footer />
       </div>
-    )
-  }
+     )
 }
 
 export default Mainpage;

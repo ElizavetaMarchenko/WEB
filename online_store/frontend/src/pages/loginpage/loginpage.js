@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 
 
-
-
 const LoginPage = () => {
   const async = require('async');
   const [seller, Setseller] = useState({

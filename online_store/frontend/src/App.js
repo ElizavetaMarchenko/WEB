@@ -5,7 +5,6 @@ import Loginpage from './pages/loginpage/loginpage'
 import Registrationpage from './pages/registrationpage/registrationpage'
 import AddProductPage from './pages/addproductpage/addproductpage'
 
-
 function App(){
   return(
     <>

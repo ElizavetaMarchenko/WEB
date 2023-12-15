@@ -17,6 +17,13 @@ def getCategory(request):
 
 
 @api_view(['GET'])
+def get_category_name_by_id(request, category_id):
+    category = Category.objects.filter(category_id=category_id)
+    serializer = CategorySerializer(category,  many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
 def getProduct(request):
     product = Product.objects.all()
     serializer = ProductSerializer(product, many=True)
@@ -24,9 +31,9 @@ def getProduct(request):
 
 
 @api_view(['GET'])
-def getProduct_category(request, category_id):
-    product = Product.objects.filter(category_id=category_id)
-    serializer = SellerSerializer(product, many=True)
+def getProduct_category(request, pk):
+    product = Product.objects.filter(category_id=pk)
+    serializer = ProductSerializer(product, many=True)
     return Response(serializer.data)
 
 

@@ -1,16 +1,23 @@
 import React, {useState, useEffect} from "react";
 import { Dropdown, message} from 'antd';
-import axios from 'axios';
+import { AiOutlineBars } from "react-icons/ai";
+import { FaUserSecret } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
+
 
 export default function Header(props) {
+  const navigate = useNavigate();
+
   const onClick = ({ key }) => {
-    message.info(`Click on item ${key}`);
-    fetchData();
+    console.log(key == 13)
+    if (key == 13) navigate('/', { state: { category_id: undefined}});
+    else navigate('/', { state: { category_id: key}});
   };
 
   console.log(props.id)
   const [category, setCategory] = useState([]);
-  const [sellerName, setSellerName] = useState('fgdfg');
+  const [sellerName, setSellerName] = useState('fgfg');
 
   const fetchData = async () => {
     await axios.get('get_seller_name/' + props.id)
@@ -21,19 +28,26 @@ export default function Header(props) {
       alert('Error in get seller name');
     });
 
-    await axios.get('getCategory/')
-      .then((response) => {
-        setCategory(response.data);
-      })
-      .catch(() => {
-        alert('Error in get');
-      });
-
   };
   useEffect(()=>{
     fetchData();
   },[props.id]);
 
+   onclick= () => {
+        const get_cat = async () =>
+        {
+        try
+        {
+        const response = await axios.get('getCategory/')
+        setCategory(response.data)
+        }
+        catch(error) {
+            alert('Error in get category')
+        }
+        }
+
+        get_cat();
+   }
 
   const items = category.map(item => {
   return {label: item.category_name,
@@ -50,13 +64,17 @@ export default function Header(props) {
         <div className="logo"></div>
         <ul className="nav">
           <li>
-            <div className="welcome_photo"></div>
+            <FaUserSecret size={50}/>
             <p>{sellerName}</p>
           </li>
           <li>
-            <div className="category_photo"></div>
-            <Dropdown menu={{ items, onClick }}>
-              <p className="category_text">Категории</p>
+            <AiOutlineBars size={50}/>
+            <Dropdown menu={{ items, onClick }}trigger={['click']}>
+            <a className="ant-dropdown-link"
+             onClick={e => {e.preventDefault();
+             onclick();}}>
+            Категории
+            </a>
             </Dropdown>
           </li>
         </ul>
