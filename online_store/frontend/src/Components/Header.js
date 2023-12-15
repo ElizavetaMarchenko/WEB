@@ -20,7 +20,7 @@ export default function Header() {
   const [category, setCategory] = useState([]);
 
     // запрос только, когда нажали на категории
-    onclick= () => {
+    const onclick_category = () => {
         const get_cat = async () =>
         {
         try
@@ -62,7 +62,7 @@ export default function Header() {
             <Dropdown menu={{ items, onClick }}trigger={['click']}>
             <a className="ant-dropdown-link"
              onClick={e => {e.preventDefault();
-             onclick();
+             onclick_category();
              }}>
             Категории
             </a>
