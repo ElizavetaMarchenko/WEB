@@ -50,6 +50,13 @@ def get_seller_name_by_id(request, seller_id):
     serializer = SellerSerializer(seller_login, many=True)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def get_product_details(request, product_id):
+    product = Product.objects.get(product_id=product_id)
+    serialazer = ProductSerializer(product)
+    return Response(serialazer.data)
+
+
 
 @api_view(['POST'])
 def postSeller(request):
@@ -86,3 +93,4 @@ def deleteCategory(request, pk):
     category = Category.objects.get(category_id=pk)
     category.delete()
     return Response('Category Eliminado')
+
