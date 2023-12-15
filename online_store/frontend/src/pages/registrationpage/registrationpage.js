@@ -3,7 +3,10 @@ import { Form, Input, Button, Row, Col, Card } from 'antd';
 import { UserOutlined, LockOutlined, PhoneOutlined, GlobalOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
+<<<<<<< HEAD
 import {Helmet} from "react-helmet";
+=======
+>>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
 
 const Registrationpage = () => {
 
@@ -73,7 +76,10 @@ const Registrationpage = () => {
 
   return (
     <div className="registration-container">
+<<<<<<< HEAD
       <Helmet><title>Registration</title></Helmet>
+=======
+>>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
       <Row justify="center" align="middle" style={{ minHeight: '100vh' }}>
         <Col span={8}>
           <Card title="Регистрация" style={{ borderRadius: '12px' }}>
@@ -200,4 +206,8 @@ const Registrationpage = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Registrationpage;
+=======
+export default Registrationpage;
+>>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff

@@ -19,7 +19,10 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = '__all__'
 
+<<<<<<< HEAD
 class StatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Status
         fields = '__all__'
+=======
+>>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff

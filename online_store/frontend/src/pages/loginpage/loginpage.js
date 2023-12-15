@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import { Form, Input, Button, Checkbox, Row, Col } from 'antd';
 import { PhoneOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 import axios from 'axios';
 import {Helmet} from "react-helmet";
 
+=======
+import axios from 'axios'
+>>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
 
 
 const LoginPage = () => {
@@ -86,7 +90,10 @@ const LoginPage = () => {
 
   return (
     <Row justify="center" align="middle" className="login-container" style={{ minHeight: '100vh' }}>
+<<<<<<< HEAD
       <Helmet><title>Authentication</title></Helmet>
+=======
+>>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
       <Col span={8}>
         <Form
           name="login_form"

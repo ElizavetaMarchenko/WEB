@@ -6,10 +6,17 @@ import { useNavigate } from 'react-router-dom';
 
 const { Title } = Typography;
 
+<<<<<<< HEAD
 const MaterialBlock = ({ className, title }) => {
   const navigate = useNavigate();
   const handleAddProductClick = () => {
     navigate('/addproduct');
+=======
+const MaterialBlock = ({ className, title, id }) => {
+  const navigate = useNavigate();
+  const handleAddProductClick = () => {
+    navigate('/addproduct', { state: { id: id}});
+>>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
   };
   return (
     <Card
@@ -42,4 +49,8 @@ const MaterialBlock = ({ className, title }) => {
   );
 };
 
+<<<<<<< HEAD
 export default MaterialBlock;
+=======
+export default MaterialBlock;
+>>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff

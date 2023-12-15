@@ -19,4 +19,8 @@ const Profilepage = () =>{
   )
 }
 
+<<<<<<< HEAD
 export default Profilepage;
+=======
+export default Profilepage;
+>>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
     margin: 0;
     line-height: 1.6;
@@ -7,4 +8,15 @@ body{
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     color: #333;
+=======
+body{
+    margin: 0;
+    line-height: 1.6;
+}
+
+.info_text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #333;
+>>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
 }

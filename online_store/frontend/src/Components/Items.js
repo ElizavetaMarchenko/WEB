@@ -13,4 +13,8 @@ export class Items extends Component {
   }
 }
 
+<<<<<<< HEAD
 export default Items;
+=======
+export default Items;
+>>>>>>> da8e633f6001102a99971fb2d33165b9f186bfff
