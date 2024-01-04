@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Checkbox, Row, Col } from 'antd';
+import { Form, Input, Button, Checkbox, Row, Col, message } from 'antd';
 import { PhoneOutlined, LockOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 
 const LoginPage = () => {
+
   const async = require('async');
+
+  const [formValid, setFormValid] = useState(false);
+
   const [seller, Setseller] = useState({
     login_form_telephone : "",
     login_form_password : "",
   });
-  const [id_sel, setId] = useState(-1);
+
+  const navigate = useNavigate()
 
   function handle(e){
         const newSeller = {...seller};
@@ -20,6 +25,7 @@ const LoginPage = () => {
         console.log(newSeller);
   }
 
+/*
     async function response_result(response)
     {
         console.log("data:", response.data);
@@ -38,21 +44,48 @@ const LoginPage = () => {
         }
         }
     }
+    */
 
-    async function submit(){
-        let response = await axios.get('get_tel/'+seller.login_form_telephone)
-        const id = await response.data[0]["seller_id"] ;
-        await setId(id);
-        let result = await response_result(response);
-        return result;
+    const [form] = Form.useForm()
+
+    const initValues = {
+    telephone: "",
+    password: ""
     }
 
-  const [formValid, setFormValid] = useState(false);
+    const [messageApi, contextHolder] = message.useMessage();
+
+  const error = () => {
+    messageApi.open({
+      type: 'error',
+      content: 'Incorrect phone number or password',
+      duration: 10,
+      style: {
+        marginTop: '15vh',
+      },
+    });
+  };
+
+    async function submit(){
+        let response = await axios.get('get_tel/'+seller.login_form_telephone+'/'+seller.login_form_password)
+        console.log(response.data)
+        if (response.data.length == 0)
+            {
+            console.log("ERTYUI")
+            form.setFieldsValue( { password: initValues.password } )
+            error()
+            return
+            }
+        const id = await response.data[0]["seller_id"] ;
+        navigate("/profile", {state:{id: id}});
+    }
+
 
   const onFinish = (values) => {
     console.log('Received values:', values);
   };
 
+  /*
   const passwordValidator = async(rule, value) => {
     const passwordRegex = /^(?=.*[a-zа-яё\d])(?=.*[A-ZА-ЯЁ])(?=.*\d).{8,}$/;
     if (value && !value.match(passwordRegex)) {
@@ -76,28 +109,37 @@ const LoginPage = () => {
     }
     return Promise.resolve();
   };
+  */
+
+
 
   const checkFormValidation = () => {
-    const isFormValid = true;
-    setFormValid(isFormValid);
+    if ((seller.login_form_telephone != "") && (seller.login_form_password != ""))
+        setFormValid(true);
+    else
+        setFormValid(false);
   };
+
 
   return (
     <Row justify="center" align="middle" className="login-container" style={{ minHeight: '100vh' }}>
       <Col span={8}>
         <Form
+          form={form}
           name="login_form"
           onFinish={onFinish}
           layout="vertical"
+          initialValues= {initValues}
           onFieldsChange={checkFormValidation}
         >
+        {contextHolder}
           <Form.Item
             name="telephone"
             label="Номер телефона"
             onChange = {(e)=>handle(e)} id="telephone" value={seller.seller_telephone}
             rules={[
               { required: true, message: 'Введите номер телефона' },
-              { validator: telephoneValidator },
+
             ]}
           >
             <Input
@@ -107,11 +149,12 @@ const LoginPage = () => {
 
           <Form.Item
             name="password"
+
             label="Пароль"
             onChange = {(e)=>handle(e)} id="password" value={seller.seller_password}
             rules={[
               { required: true, message: 'Пожалуйста, введите пароль' },
-              { validator: passwordValidator },
+
             ]}
           >
             <Input.Password
@@ -130,9 +173,9 @@ const LoginPage = () => {
                 htmlType="submit"
                 style={{ borderRadius: '12px', width: '100%' }}
                 disabled={!formValid}
+                onClick={submit}
               >
-                <Link to="/profile" state={{ id: id_sel }}>
-                      Войти</Link>
+                      Войти
               </Button>
             </Col>
             <Col span={12}>

@@ -48,8 +48,9 @@ class Seller(models.Model):
     seller_password = models.TextField()
     seller_telephone = models.TextField(blank=True, null=True)
     seller_name = models.TextField(blank=True, null=True)
-    seller_social_network = models.TextField(blank=True, null=True)
-
+    seller_vk = models.TextField(blank=True, null=True)
+    seller_telegram = models.TextField(blank=True, null=True)
+    seller_insta = models.TextField(blank=True, null=True)
     class Meta:
         managed = False
         db_table = 'Seller'
