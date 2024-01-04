@@ -9,8 +9,10 @@ const { Title, Paragraph } = Typography;
 const ProductPage = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
+  const [sellerName, setSellerName] = useState('fgfg');
 
   useEffect(() => {
+    
     const getProductDetails = async () => {
       try {
         const response = await axios.get(`/get_product_details/${productId}`);
@@ -22,8 +24,22 @@ const ProductPage = () => {
     };
 
     getProductDetails();
+
+    
+    // const fetchData = async () => {
+    //   await axios.get('get_seller_name/' + product.seller)
+    //   .then((response) => {
+    //     setSellerName(response.data[0]["seller_social_network"]);
+    //   })
+    //   .catch(() => {
+    //     alert('Error in get seller name');
+    //   });
+  
+    // };
+    // fetchData();
   }, [productId]);
 
+  
   const animateProductDetails = () => {
     gsap.from('.product-card', { opacity: 0, duration: 1.5, ease: 'power2.inOut' });
   };
@@ -41,9 +57,9 @@ const ProductPage = () => {
           className="product-card"
         >
           <Title level={3}>{product.product_name}</Title>
-          <Paragraph>{product.product_description}</Paragraph>
-          <Paragraph strong>Price: {product.product_price}р</Paragraph>
-          <Paragraph>Category: {product.category.name}</Paragraph>
+          <Paragraph>Описание: {product.product_description}</Paragraph>
+          <Paragraph strong>Стоимостть: {product.product_price}р</Paragraph>
+          <Paragraph>Для связи: {sellerName}</Paragraph>
         </Card>
       </Col>
     </Row>

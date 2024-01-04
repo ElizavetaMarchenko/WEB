@@ -38,8 +38,8 @@ def getProduct_category(request, pk):
 
 
 @api_view(['GET'])
-def getSeller_telephone(request, telephone):
-    seller = Seller.objects.filter(seller_telephone=telephone)
+def getSeller_log(request, telephone, password):
+    seller = Seller.objects.filter(seller_telephone=telephone, seller_password=password)
     serializer = SellerSerializer(seller, many=True)
     return Response(serializer.data)
 
@@ -89,8 +89,14 @@ def putCategory(request, pk):
 
 
 @api_view(['DELETE'])
-def deleteCategory(request, pk):
-    category = Category.objects.get(category_id=pk)
-    category.delete()
-    return Response('Category Eliminado')
+def deleteProduct(request, pk):
+    product = Product.objects.get(product_id=pk)
+    product.delete()
+    return Response('Product deleted')
 
+
+@api_view(['GET'])
+def getProduct_by_seller_id(request, pk):
+    product = Product.objects.filter(seller_id=pk)
+    serializer = ProductSerializer(product, many=True)
+    return Response(serializer.data)
