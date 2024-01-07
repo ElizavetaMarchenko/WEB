@@ -2,49 +2,49 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Card, Typography, Row, Col } from 'antd';
 import axios from 'axios';
-import gsap from 'gsap';
 
 const { Title, Paragraph } = Typography;
 
 const ProductPage = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
-  const [sellerName, setSellerName] = useState('fgfg');
+  const [sellerName, setSellerName] = useState('');
+  const [sellerDetails, setSellerDetails] = useState(null);
 
   useEffect(() => {
-    
-    const getProductDetails = async () => {
-      try {
-        const response = await axios.get(`/get_product_details/${productId}`);
-        setProduct(response.data);
-        animateProductDetails();
-      } catch (error) {
-        alert('Error getting product details');
+  const getProductDetails = async () => {
+    try {
+      const response = await axios.get(`/get_product_details/${productId}`);
+      setProduct(response.data);
+
+      // Получение деталей продавца на основе response.data.seller
+      const sellerResponse = await axios.get(`/product/get_seller_details/${response.data.seller}`);
+      const socialMediaLinks = [];
+
+      if (sellerResponse.data.seller_vk !== null) {
+        socialMediaLinks.push(<a href={sellerResponse.data.seller_vk} target="_blank" rel="noopener noreferrer">VK</a>);
       }
-    };
 
-    getProductDetails();
+      if (sellerResponse.data.seller_telegram !== null) {
+        socialMediaLinks.push(<a href={sellerResponse.data.seller_telegram} target="_blank" rel="noopener noreferrer">Telegram</a>);
+      }
 
-    
-    // const fetchData = async () => {
-    //   await axios.get('get_seller_name/' + product.seller)
-    //   .then((response) => {
-    //     setSellerName(response.data[0]["seller_social_network"]);
-    //   })
-    //   .catch(() => {
-    //     alert('Error in get seller name');
-    //   });
-  
-    // };
-    // fetchData();
-  }, [productId]);
+      if (sellerResponse.data.seller_insta !== null) {
+        socialMediaLinks.push(<a href={sellerResponse.data.seller_insta} target="_blank" rel="noopener noreferrer">Instagram</a>);
+      }
 
-  
-  const animateProductDetails = () => {
-    gsap.from('.product-card', { opacity: 0, duration: 1.5, ease: 'power2.inOut' });
+      setSellerDetails(socialMediaLinks);
+    } catch (error) {
+      alert('Ошибка при получении деталей продукта или продавца');
+    }
   };
 
-  if (!product) {
+  getProductDetails();
+}, [productId]);
+
+
+
+  if (!product || !sellerDetails) {
     return <div>Loading...</div>;
   }
 
@@ -58,8 +58,10 @@ const ProductPage = () => {
         >
           <Title level={3}>{product.product_name}</Title>
           <Paragraph>Описание: {product.product_description}</Paragraph>
-          <Paragraph strong>Стоимостть: {product.product_price}р</Paragraph>
-          <Paragraph>Для связи: {sellerName}</Paragraph>
+          <Paragraph strong>Стоимость: {product.product_price}р</Paragraph>
+          <Paragraph>
+            Для связи: {sellerDetails.map((link, index) => <span key={index}>{link} </span>)}
+          </Paragraph>
         </Card>
       </Col>
     </Row>

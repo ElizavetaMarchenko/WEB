@@ -56,6 +56,12 @@ def get_product_details(request, product_id):
     serialazer = ProductSerializer(product)
     return Response(serialazer.data)
 
+@api_view(['GET'])
+def get_seller_details(request, seller_id):
+    seller = Seller.objects.get(seller_id = seller_id)
+    serializer = SellerSerializer(seller)
+    return Response(serializer.data)
+
 
 
 @api_view(['POST'])
@@ -100,3 +106,5 @@ def getProduct_by_seller_id(request, pk):
     product = Product.objects.filter(seller_id=pk)
     serializer = ProductSerializer(product, many=True)
     return Response(serializer.data)
+
+
