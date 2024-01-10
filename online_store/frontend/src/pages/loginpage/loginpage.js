@@ -25,27 +25,6 @@ const LoginPage = () => {
         console.log(newSeller);
   }
 
-/*
-    async function response_result(response)
-    {
-        console.log("data:", response.data);
-        if (response.data.length === 0)
-            return -1;
-        else
-        {
-        if (response.data[0]["seller_password"] === seller.login_form_password)
-        {
-            console.log("data:", response.data);
-            return 0;
-        }
-        else
-        {
-        return 1;
-        }
-        }
-    }
-    */
-
     const [form] = Form.useForm()
 
     const initValues = {

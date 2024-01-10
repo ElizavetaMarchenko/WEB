@@ -6,7 +6,15 @@
     box-sizing: border-box;
     align-items: center;
 }
-    
+
+header .logo{
+    background: url('./img/logo.png') no-repeat;
+    width: 100%; /* Ширина */
+    height: 92px;
+    background-position: center center;
+    margin: 0 auto;
+}
+
 body{
     background-color: white;
     color: black;
@@ -21,11 +29,13 @@ body{
 .head{
     display: flex;
     width: 100%;
-    padding: 0 120px 0 119px ;
+    padding: 0 50px 0 49px ;
+    background-color: #2bb52b;
+    flex-direction: row;
 }
 
 .place_text{
-    font-size: 20px;
+    font-size: 15px;
 }
 
 header .place_photo{
@@ -50,38 +60,57 @@ header .category_text{
     text-align: center;
 }
 
-header .logo{
-    background: url('../../../public/img/logo.png') no-repeat;
-    width: 352px;
-    height: 92px;
-    background-position: center center;
-    margin: 0 auto;
-}
 
-header .presentation{
+
+.presentation{
     margin: 0 0 59px 0;
     background: url('./img/Первая\ заставка.png') no-repeat;
     background-size: contain;
     width: 100%;
-    height: 350px;
+    height: 150px;
     background-size: cover;
     background-position: center center;
     position: relative;
-    
+
 }
+
+.presentation_text{
+    font-size: 23px;
+    font-weight: 900;
+    color: white;
+    transform: translate(750px, 80px)
+}
+
 .place {
     display: flex;
     align-items: center;
-    gap: 42px;
+    gap: 10px;
+    flex-direction: column;
+    margin: 20px 10px 20px 10px;
 }
 
-
+.info {
+  cursor: pointer;
+  display: block;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid #2bb52b;
+  background-color: #2bb52b;
+  transform: translate(20px, -20px);
+}
 
 header ul.nav{
     display: flex;
     list-style: none;
     float: right;
-    gap: 56px;
+    gap: 20px;
+}
+
+header .search
+{
+    width: 160%;
+    margin: 20px 20px 20px 20px
 }
 
 header ul.nav li{
@@ -147,7 +176,7 @@ main{
 main .item{
     width: 30%;
     margin-bottom: 150px;
-    background: #D9D9D9;
+    background: #2bb52b;
     overflow: hidden;
     position: relative;
     padding-bottom: 20px;
@@ -193,7 +222,7 @@ main .add-to-cart:hover{
 
 .icon-container{
     height: 100px;
-    background-color: black;
+    background-color: #2bb52b;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -201,7 +230,7 @@ main .add-to-cart:hover{
 
 .icon a {
     text-decoration: none; 
-    color: white; 
+    color: black;
     display: block; 
     padding: 5px; 
 }

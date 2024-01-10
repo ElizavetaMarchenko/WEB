@@ -42,7 +42,9 @@ const MaterialBlock = ({ className, title, id }) => {
           img: item.product_image,
           desc: item.product_description,
           category: item.category,
-          price: item.product_price
+          price: item.product_price,
+          seller_id: item.seller,
+          comment: item.product_comment,
     }
     })
     SetItems(items)
@@ -95,7 +97,6 @@ const MaterialBlock = ({ className, title, id }) => {
               alignItems: 'center',
             }}
           >
-            <EditOutlined style={{ fontSize: '60px' }} onClick={SetSearch}/>
             <PlusOutlined style={{ fontSize: '60px' }} onClick={handleAddProductClick} />
           </Space>
         </div>

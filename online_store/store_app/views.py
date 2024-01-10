@@ -31,13 +31,6 @@ def getProduct(request):
 
 
 @api_view(['GET'])
-def getProduct_by_seller_id(request, pk):
-    product = Product.objects.filter(seller_id=pk)
-    serializer = ProductSerializer(product, many=True)
-    return Response(serializer.data)
-
-
-@api_view(['GET'])
 def getProduct_category(request, pk):
     product = Product.objects.filter(category_id=pk)
     serializer = ProductSerializer(product, many=True)
@@ -56,6 +49,19 @@ def get_seller_name_by_id(request, seller_id):
     seller_login = Seller.objects.filter(seller_id=seller_id)
     serializer = SellerSerializer(seller_login, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def get_product_details(request, product_id):
+    product = Product.objects.get(product_id=product_id)
+    serialazer = ProductSerializer(product)
+    return Response(serialazer.data)
+
+@api_view(['GET'])
+def get_seller_details(request, seller_id):
+    seller = Seller.objects.get(seller_id = seller_id)
+    serializer = SellerSerializer(seller)
+    return Response(serializer.data)
+
 
 
 @api_view(['POST'])
@@ -93,3 +99,21 @@ def deleteProduct(request, pk):
     product = Product.objects.get(product_id=pk)
     product.delete()
     return Response('Product deleted')
+
+
+@api_view(['GET'])
+def getProduct_by_seller_id(request, pk):
+    product = Product.objects.filter(seller_id=pk)
+    serializer = ProductSerializer(product, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['PUT'])
+def editProduct_by_product_id(request, pk):
+    data = request.data
+    product = Product.objects.get(product_id=pk)
+    serializer = ProductSerializer(instance=product, data=data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

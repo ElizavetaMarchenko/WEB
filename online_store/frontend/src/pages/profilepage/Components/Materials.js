@@ -7,7 +7,7 @@ const Materials = (props) => {
   return (
     <div>
       <MaterialBlock className='my_product_block' title='Мои товары' id = {props.id}/>
-      <MaterialBlock className='like_block' title='Понравившиеся' id = {props.id}/>
+       {/* <MaterialBlock className='like_block' title='Понравившиеся' id = {props.id}/> */}
     </div>
   );
 };

@@ -6,7 +6,7 @@ header .profile_presentation{
     background: url('./img/Вторая\ заставка.png') no-repeat;
     background-size: contain;
     width: 100%;
-    height: 350px;
+    height: 250px;
     background-size: cover;
     background-position: center center;
     position: relative;
@@ -29,7 +29,7 @@ header .profile_welcome__title{
     background: url('./img/school_material.png') no-repeat;
     background-size: contain;
     width: 100%;
-    height: 289px;
+    height: 150px;
     background-size: cover;
     background-position: center center;
     position: relative;
@@ -82,19 +82,29 @@ body{
 .head{
     display: flex;
     width: 100%;
-    padding: 0 120px 0 119px ;
+    padding: 0 50px 0 49px ;
 }
 
 .place_text{
-    font-size: 20px;
+    font-size: 15px;
 }
 
+.info {
+  cursor: pointer;
+  display: block;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid #2bb52b;
+  background-color: #2bb52b;
+  transform: translate(20px, -20px);
+}
 
 header ul.nav{
     display: flex;
     list-style: none;
     float: right;
-    gap: 56px;
+    gap: 20px;
 }
 
 header ul.nav li{
@@ -160,7 +170,7 @@ main{
 main .item{
     width: 30%;
     margin-bottom: 150px;
-    background: #D9D9D9;
+    background: #2bb52b;
     overflow: hidden;
     position: relative;
     padding-bottom: 20px;
@@ -184,29 +194,49 @@ main h2, main p, main b{
 
 main b{color: black;}
 
-main .add-to-cart{
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    background: #ca5252;
-    width: 35px;
-    height: 35px;
-    text-align: center;
-    line-height: 35px;
-    color: #fff;
-    border-radius: 50%;
-    cursor: pointer;
-    font-weight: 600;
-    transition: transform 500ms ease;
+.remove-cart {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  height: 37px;
+  width: 37px;
+  content-align: center;
+  border-radius: 50%;
+  shape: circle;
+  border: 1px solid #2bb52b;
+  background-color: #000;
+  transform: translate(263px, -45px);
 }
 
-main .add-to-cart:hover{
-    transform: scale(1.5) translateY(-5px);
+.edit-cart {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  height: 37px;
+  width: 37px;
+  content-align: center;
+  border-radius: 50%;
+  shape: circle;
+  border: 1px solid #2bb52b;
+  background-color: #000;
+  transform: translate(300px, -85px);
 }
 
+.btn
+{
+  display: flex;
+}
+
+.item_content{
+  flex-direction: row;
+}
+
+.item_text{
+    width: 300px
+}
 .icon-container{
     height: 100px;
-    background-color: black;
+    background-color: #2bb52b;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -214,7 +244,7 @@ main .add-to-cart:hover{
 
 .icon a {
     text-decoration: none;
-    color: white;
+    color: black;
     display: block;
     padding: 5px;
 }
