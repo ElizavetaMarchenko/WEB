@@ -24,7 +24,7 @@ const Header = ({ setSearchTerm }) => {
   const onclick_category = () => {
     const get_cat = async () => {
       try {
-        const response = await axios.get('getCategory/');
+        const response = await axios.get('http://localhost:8000/getCategory/');
         setCategory(response.data);
       } catch (error) {
         alert('Error in get category');

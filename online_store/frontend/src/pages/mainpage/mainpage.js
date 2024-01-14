@@ -18,9 +18,9 @@ const Mainpage = () => {
         let response = [];
 
         if (location.state?.category_id === undefined) {
-          response = await axios.get('getProduct/');
+          response = await axios.get('http://localhost:8000/getProduct/');
         } else {
-          response = await axios.get('get_prod_category/' + location.state.category_id);
+          response = await axios.get('http://localhost:8000/get_prod_category/' + location.state.category_id);
         }
 
         setProduct(response.data);

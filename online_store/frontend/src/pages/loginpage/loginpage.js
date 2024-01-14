@@ -63,7 +63,7 @@ const LoginPage = () => {
     };
 
     async function submit(){
-      let response = await axios.get('get_tel/'+seller.login_form_telephone+'/'+seller.login_form_password)
+      let response = await axios.get('http://localhost:8000/get_tel/'+seller.login_form_telephone+'/'+seller.login_form_password)
       if (response.data.length == 0)
           {
             console.log("ERTYUI")

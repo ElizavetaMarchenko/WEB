@@ -20,7 +20,7 @@ export default function Header(props) {
   const [sellerName, setSellerName] = useState('fgfg');
 
   const fetchData = async () => {
-    await axios.get('get_seller_name/' + props.id)
+    await axios.get('http://localhost:8000/get_seller_name/' + props.id)
     .then((response) => {
       setSellerName(response.data[0]["seller_login"]);
     })
@@ -38,7 +38,7 @@ export default function Header(props) {
         {
         try
         {
-        const response = await axios.get('getCategory/')
+        const response = await axios.get('http://localhost:8000/getCategory/')
         setCategory(response.data)
         }
         catch(error) {

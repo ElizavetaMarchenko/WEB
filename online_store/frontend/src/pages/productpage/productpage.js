@@ -14,11 +14,11 @@ const ProductPage = () => {
   useEffect(() => {
   const getProductDetails = async () => {
     try {
-      const response = await axios.get(`/get_product_details/${productId}`);
+      const response = await axios.get(`http://localhost:8000/get_product_details/${productId}`);
       setProduct(response.data);
 
       // Получение деталей продавца на основе response.data.seller
-      const sellerResponse = await axios.get(`/product/get_seller_details/${response.data.seller}`);
+      const sellerResponse = await axios.get(`http://localhost:8000/product/get_seller_details/${response.data.seller}`);
       const socialMediaLinks = [];
 
       if (sellerResponse.data.seller_vk !== null) {

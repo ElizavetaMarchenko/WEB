@@ -28,7 +28,7 @@ const AddProductPage = () => {
 
   const fetchData = () => {
     axios
-      .get("getCategory/")
+      .get("http://localhost:8000/getCategory/")
       .then((response) => {
         setCategory(response.data);
       })
@@ -50,7 +50,7 @@ const AddProductPage = () => {
 
   async function submit(e){
         e.preventDefault();
-        await axios.post('post_product/',{
+        await axios.post('http://localhost:8000/post_product/',{
             product_name : product.productName,
             product_description : product.productDescription,
             product_price : product.productPrice,

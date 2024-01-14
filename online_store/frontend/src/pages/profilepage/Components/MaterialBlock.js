@@ -28,7 +28,7 @@ const MaterialBlock = ({ className, title, id }) => {
     try
     {
     let response = []
-    response = await axios.get('getProduct/'+ id)
+    response = await axios.get('http://localhost:8000/getProduct/'+ id)
     //setProduct(response.data)
     const items = response.data.map(item =>
     {

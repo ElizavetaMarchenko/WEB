@@ -1,8 +1,11 @@
-FROM docker.io/library/node:14.21.3
+FROM node:14-alpine
 WORKDIR /app
-COPY package*.json /app/
+COPY package.json package.json
 RUN npm install
 COPY . .
-RUN npm install
-WORKDIR /app
 RUN npm run build
+EXPOSE 3000
+CMD ["npm", "start"]
+
+
+

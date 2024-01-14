@@ -78,7 +78,7 @@ if (!hasFilledSocialNetwork) {
   return;
 }
 
-axios.post('post/', {
+axios.post('http://localhost:8000/post/', {
 seller_name: seller.seller_name,
 seller_login: seller.seller_login,
 seller_vk: seller.seller_vk,

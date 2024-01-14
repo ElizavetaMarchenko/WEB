@@ -2,25 +2,24 @@ version: '3'
 
 services:
   django:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      # command: cd online_store && python manage.py runserver 0.0.0.0:8000
+    build: .
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
     ports:
       - "8000:8000"
-    depends_on:
-      - react
+    working_dir: /app/online_store
+
 
   react:
     build:
       context: online_store/frontend
-      dockerfile: Dockerfile
-    command: sh -c "npm start"
     volumes:
-      - ./frontend:/app
+      - frontend:/app
     ports:
       - "3000:3000"
+
+volumes:
+  frontend:
 
 

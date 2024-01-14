@@ -13,7 +13,7 @@ const Item = (props) => {
   {
     try
         {
-        const response = await axios.delete('delete_product/'+props.item.id)
+        const response = await axios.delete('http://localhost:8000/delete_product/'+props.item.id)
         console.log(response.data)
         }
     catch(error) {
