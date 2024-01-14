@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
+
+
+header .profile_presentation{
+    margin: 0 0 59px 0;
+    background: url('./img/Вторая\ заставка.png') no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
+header .profile_welcome{
+    text-align: center;
+    font-size: 23px;
+    width: 1185px;
+    height: 216px;
+    margin: 0 auto;
+}
+
+header .profile_welcome__title{
+    font-size: 50px;
+}
+
+.my_product_block__head{
+    margin: 0 0 95px 0;
+    background: url('./img/school_material.png') no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 150px;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
+.my_product_block {
+    font-family: 'Playfair Display', serif;
+}
+
+.like_block__head{
+    margin: 0 0 95px 0;
+    background: url('./img/clothing_material.png') no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 289px;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
+.differents_block__head{
+    margin: 0 0 95px 0;
+    background: url('./img/different_material.png') no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 289px;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+body{
+    background-color: white;
+    color: black;
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+}
+
+.wrapper{
+    margin: 0px auto;
+}
+
+.head{
+    display: flex;
+    width: 100%;
+    padding: 0 50px 0 49px ;
+}
+
+.place_text{
+    font-size: 15px;
+}
+
+.info {
+  cursor: pointer;
+  display: block;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid #2bb52b;
+  background-color: #2bb52b;
+  transform: translate(20px, -20px);
+}
+
+header ul.nav{
+    display: flex;
+    list-style: none;
+    float: right;
+    gap: 20px;
+}
+
+header ul.nav li{
+    display: flex;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 500ms ease;
+    align-items: center;
+    gap: 11px;
+}
+
+header ul.nav li:hover{
+    opacity: 0.5;
+}
+
+header .welcome{
+    text-align: center;
+    font-size: 23px;
+    width: 840px;
+    height: 216px;
+    margin: 0 auto;
+}
+
+.about_sale{
+    background-color: #D9D9D9;
+    width: 100%;
+    height: 220px;
+    align-items: center;
+    margin-bottom: 86px;
+}
+
+.about_sale__title{
+    color: #615E5E;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 51px;
+}
+
+.about_sale__text{
+    text-align: center;
+    margin: 0 auto;
+    width: 1000px;
+    font-size: 20px;
+}
+
+.POLYVITO{
+    font-weight: 900;
+}
+.addition{
+    text-align: center;
+}
+
+
+
+main{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 120px 0 120px;
+}
+
+main .item{
+    width: 30%;
+    margin-bottom: 150px;
+    background: #2bb52b;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+main .item img{
+    width: 100%;
+    height: 400px;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+    transition: transform 500ms ease;
+}
+
+main .item img:hover{
+    transform: scale(1.05);
+}
+
+main h2, main p, main b{
+    margin: 10px 20px;
+}
+
+main b{color: black;}
+
+.remove-cart {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  height: 37px;
+  width: 37px;
+  content-align: center;
+  border-radius: 50%;
+  shape: circle;
+  border: 1px solid #2bb52b;
+  background-color: #000;
+  transform: translate(263px, -45px);
+}
+
+.edit-cart {
+  position: relative;
+  cursor: pointer;
+  display: block;
+  height: 37px;
+  width: 37px;
+  content-align: center;
+  border-radius: 50%;
+  shape: circle;
+  border: 1px solid #2bb52b;
+  background-color: #000;
+  transform: translate(300px, -85px);
+}
+
+.btn
+{
+  display: flex;
+}
+
+.item_content{
+  flex-direction: row;
+}
+
+.item_text{
+    width: 300px
+}
+.icon-container{
+    height: 100px;
+    background-color: #2bb52b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 5px;
+}
+
+
